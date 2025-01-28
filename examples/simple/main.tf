@@ -6,9 +6,9 @@ locals {
   region = "us-east-1"
 }
 
-module "simple_example" {
-    source = "../../"
-    name = "your-name" // for identifying created resources
+module "simple_example" {  
+    source  = "jkblume/cloudwatch-alarms-to-teams-webhook/aws"
+    name = "descriptive-name" // for identifying created resources by a descriptive name
     alarm_arns = [
         // insert alarm arns you want to monitor
     ]
