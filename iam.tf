@@ -11,7 +11,7 @@ data "aws_iam_policy_document" "events_this" {
 }
 
 resource "aws_iam_role" "this" {
-  name               = "${var.name}-${random_uuid.id.result}"
+  name               = local.name_with_id
   assume_role_policy = data.aws_iam_policy_document.events_this.json
 }
 

@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_event_connection" "this" {
-  name               = "${var.name}-${random_uuid.id.result}"
+  name               = local.name_with_id
   description        = "Event Connection to call Teams webhook endpoint"
   authorization_type = "API_KEY"
 
@@ -14,7 +14,7 @@ resource "aws_cloudwatch_event_connection" "this" {
 }
 
 resource "aws_cloudwatch_event_api_destination" "this" {
-  name                             = "${var.name}-${random_uuid.id.result}"
+  name                             = local.name_with_id
   description                      = "API Destination to call Teams webhool endpoint"
   invocation_endpoint              = var.webhook_url
   http_method                      = "POST"
@@ -23,7 +23,7 @@ resource "aws_cloudwatch_event_api_destination" "this" {
 }
 
 resource "aws_cloudwatch_event_rule" "this" {
-  name        = "${var.name}-${random_uuid.id.result}"
+  name        = local.name_with_id
   description = "EventBridge rule to send teams notifications for alarm state changes for defined alarms"
   event_pattern = jsonencode({
     source      = ["aws.cloudwatch"]
