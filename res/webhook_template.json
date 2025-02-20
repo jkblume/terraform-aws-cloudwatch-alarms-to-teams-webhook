@@ -1,5 +1,6 @@
 {
   "type": "message",
+  "summary": "<state>: <alarmName>",
   "attachments": [
     {
       "contentType": "application/vnd.microsoft.card.adaptive",
@@ -24,7 +25,7 @@
                   {
                     "type": "Image",
                     "style": "Person",
-                    "url": "https://family-dashboard.s3.eu-central-1.amazonaws.com/<state>.png",
+                    "url": "data:image/png;base64,${imageData}",
                     "altText": "State Image",
                     "size": "Small"
                   }
